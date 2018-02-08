@@ -1,14 +1,15 @@
 <hi align=center>If Statements by Ivan</h1><br>
 
+<input id="myText01" type=text value=6 size=4><br>
+
 <input type=button value="else" onclick="{
 
 myTemp = ''
 
-x=7
+x = document.getElementById('myText01').value
 
-if(x > 6){ myTemp +='larger than 6<br>'}
+if(x >= 6){ myTemp +='equal or larger than 6<br>'}
   else { myTemp +='less than 6<br>'}
-
 
 document.getElementById('myDiv01').innerHTML=myTemp
 
@@ -18,14 +19,16 @@ document.getElementById('myDiv01').innerHTML=myTemp
 
 
 
+
 <input type=button value="not" onclick="{
 
 myTemp = ''
 
-x=3
+x = document.getElementById('myText01').value
 
-if(x!=5){ myTemp +='not equal<br>'}
-  else { myTemp +='equal to<br>'}
+
+if(x!=5){ myTemp +='not equal to 5<br>'}
+  else { myTemp +='equal to 5<br>'}
 
 
 document.getElementById('myDiv02').innerHTML=myTemp
@@ -35,11 +38,13 @@ document.getElementById('myDiv02').innerHTML=myTemp
 <div id="myDiv02"></div>
 
 
+
+
 <input type=button value="less" onclick="{
 
 myTemp = ''
 
-x=7
+x = document.getElementById('myText01').value
 
 if(x<=7){ myTemp +='7 or less<br>'}
   else { myTemp +='greater than 7<br>'}
@@ -53,11 +58,12 @@ document.getElementById('myDiv03').innerHTML=myTemp
 
 
 
+
 <input type=button value="greater " onclick="{
 
 myTemp = ''
 
-x=9
+x = document.getElementById('myText01').value
 
 if(x>=4){ myTemp +='4 or greater<br>'}
   else { myTemp +='less than 4<br>'}
@@ -76,12 +82,12 @@ document.getElementById('myDiv04').innerHTML=myTemp
 
 myTemp = ''
 
-x=4
+x = document.getElementById('myText01').value
 
 if(x==4){ myTemp +='equal to 4<br>'}
 
 if(x==7){ myTemp +='equal to 7<br>'}
-
+  else { myTemp +='not 4 or 7<br>'}
 
 document.getElementById('myDiv05').innerHTML=myTemp
 
@@ -96,10 +102,10 @@ document.getElementById('myDiv05').innerHTML=myTemp
 
 myTemp = ''
 
-x=6
+x = document.getElementById('myText01').value
 
 if((x>4)&&(x<8)){ myTemp +='less than 8 and greater than 4<br>'}
-
+   else{ myTemp +='not less than 8 and greater than 4<br>'}
 document.getElementById('myDiv06').innerHTML=myTemp
 
 }"><br>
@@ -113,9 +119,10 @@ document.getElementById('myDiv06').innerHTML=myTemp
 
 myTemp = ''
 
-x=3
+x = document.getElementById('myText01').value
 
 if((x==4)||(x==3)){ myTemp +='x is 3 or 4<br>'}
+   else{ myTemp +='not 3 or 4<br>'}
 
 document.getElementById('myDiv07').innerHTML=myTemp
 
