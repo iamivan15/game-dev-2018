@@ -1,16 +1,21 @@
-<h2 align=center>loops by Ivan</h2>
+<h2 align=center>loops by Ivan</h2> 
+ 
+ 
+x = <input id="myText01" type=text value=10 size=4><br> 
+ 
+ 
+<input type=button value="loop" onclick="{ 
+ myTemp = '' 
+ myInput = document.getElementById('myDiv01').value
 
-x = <input id="myText01" type=text value=10 size=4><br>
-
-<input type=button value="loop" onclick="{
-   myTemp = ''
-   myInput = 1; myLoop <= 5; myLoop++) {
-
-     myTemp += myLoop + ','+ myInput + '<br>'
-
-  }
-
-    document.getElementById('myDiv01').innerHTML = myTemp
-}">
-
-<div id="myDiv01"></div><br>
+ for (myLoop = 1; myLoop <= 5; myLoop++) { 
+  
+  myTemp += myLoop + ', '+ myInput + '<br>' 
+  
+} 
+  
+document.getElementById('myDiv01').innerHTML = myTemp 
+ 
+}"> 
+ 
+<div id="myDiv01"></div><br> 
