@@ -4,16 +4,16 @@
 x = <input id="myText01" type=text value=10 size=4><br> 
  
  
-<input type=button value="loop" onclick="{ 
+<input type=button value="Loop" onclick="{ 
  myTemp = '' 
- myInput = document.getElementById('myDiv01').value
+ myInput = document.getElementById('myText01').value
 
  for (myLoop = 1; myLoop <= 5; myLoop++) { 
   
   myTemp += myLoop + ', '+ myInput + '<br>' 
   
 } 
-  
+
 document.getElementById('myDiv01').innerHTML = myTemp 
  
 }"> 
