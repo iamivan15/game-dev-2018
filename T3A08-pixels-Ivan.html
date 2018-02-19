@@ -2,61 +2,65 @@
 <h2 align=center>Pixels by Ivan</h2>
 
 
-<div id="myDiv01" style="position:absolute; left:200px; top:100px" >Ivan</div>
+<div id="myDiv01" style="position:absolute; left:20px; top:200px" >Ivan</div>
 
 
-<input type=button value="go Right" onclick="{
+<table border=1>
 
-    document.getElementById('myDiv01').style.left = parseInt(document.getElementById('myDiv01').style.left) + 10
-
-}">
-
-
-<input type=button value="go Left" onclick="{
-
-    document.getElementById('myDiv01').style.left = parseInt(document.getElementById('myDiv01').style.left) - 10
-
-}">
-
-<input type=button value="go Up" onclick="{
-
-    document.getElementById('myDiv01').style.top = parseInt(document.getElementById('myDiv01').style.top) - 10
-
-}">
-
-
-<input type=button value="go Down" onclick="{
-
-    document.getElementById('myDiv01').style.top = parseInt(document.getElementById('myDiv01').style.top) + 10
-
-}">
-
-<input type=button value="go Down Right " onclick="{
-
-    document.getElementById('myDiv01').style.top = parseInt(document.getElementById('myDiv01').style.top) + 10
-    document.getElementById('myDiv01').style.left = parseInt(document.getElementById('myDiv01').style.left) + 10
-
-}">
-
-
-<input type=button value="go Down Left " onclick="{
-
-    document.getElementById('myDiv01').style.top = parseInt(document.getElementById('myDiv01').style.top) + 10
-    document.getElementById('myDiv01').style.left = parseInt(document.getElementById('myDiv01').style.left) - 10
-
-}">
-
-<input type=button value="go Up Right " onclick="{
-
-    document.getElementById('myDiv01').style.top = parseInt(document.getElementById('myDiv01').style.top) - 10
-    document.getElementById('myDiv01').style.left = parseInt(document.getElementById('myDiv01').style.left) + 10
-
-}">
-
-
-<input type=button value="go Up Left " onclick="{
+<tr><td><input type=button value="\" onclick="{
 
     document.getElementById('myDiv01').style.top = parseInt(document.getElementById('myDiv01').style.top) - 10
     document.getElementById('myDiv01').style.left = parseInt(document.getElementById('myDiv01').style.left) - 10
 
 }">
+
+
+<input type=button value="U" onclick="{
+
+    document.getElementById('myDiv01').style.top = parseInt(document.getElementById('myDiv01').style.top) - 10
+
+}">
+
+<input type=button value="/" onclick="{
+
+    document.getElementById('myDiv01').style.top = parseInt(document.getElementById('myDiv01').style.top) - 10
+    document.getElementById('myDiv01').style.left = parseInt(document.getElementById('myDiv01').style.left) + 10
+
+}"><br>
+
+
+<input type=button value="<---" onclick="{
+
+    document.getElementById('myDiv01').style.left = parseInt(document.getElementById('myDiv01').style.left) - 10
+
+}">
+
+
+<input type=button value="--->" onclick="{
+
+    document.getElementById('myDiv01').style.left = parseInt(document.getElementById('myDiv01').style.left) + 10
+
+}"><br>
+
+
+<input type=button value="/" onclick="{
+
+    document.getElementById('myDiv01').style.top = parseInt(document.getElementById('myDiv01').style.top) + 10
+    document.getElementById('myDiv01').style.left = parseInt(document.getElementById('myDiv01').style.left) - 10
+
+}">
+
+
+<input type=button value="D" onclick="{
+
+    document.getElementById('myDiv01').style.top = parseInt(document.getElementById('myDiv01').style.top) + 10
+
+}">
+
+
+<input type=button value="\" onclick="{
+
+    document.getElementById('myDiv01').style.top = parseInt(document.getElementById('myDiv01').style.top) + 10
+    document.getElementById('myDiv01').style.left = parseInt(document.getElementById('myDiv01').style.left) + 10
+
+}"></td></tr>
