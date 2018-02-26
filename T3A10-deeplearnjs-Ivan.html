@@ -1,0 +1,158 @@
+
+
+<script src="https://unpkg.com/deeplearn@0.4.2/dist/deeplearn.js"> </script> 
+
+
+<input id="myButton01" type="button" value="Use GPU math" onclick="{
+                                                                 
+                                                                 
+  var math = dl.ENV.math
+  var a = dl.Array1D.new([10,20,30])
+  var b = dl.Scalar.new(2.1)
+  math.scope(function() {
+     var result = math.add(a, b);
+     document.getElementById('myDiv01').innerHTML = result.getValues()    
+  })                                                          
+}">
+       
+
+<div id="myDiv01">...</div><br>
+
+
+
+
+Array1D:<input id="myText01" type="text" value="[10,20,30]"><br>
+Scalar:<input id="myText02" type="text" value="2.1"><br>
+result.getValues()[<input id="myText03" type="number" value="2">] &lt;= -1 to show all array values<br><br>
+
+<input id="myButton02" type="button" value="Use GPU math dynamic" onclick="{
+   var math = dl.ENV.math
+   var a = dl.Array1D.new(eval(document.getElementById('myText01').value))
+   var b = dl.Scalar.new(document.getElementById('myText02').value)
+   math.scope(function() {
+      var result = math.add(a, b);
+      var mySize = document.getElementById('myText03').value  
+       if (mySize == ''){mySize = -2} // if empty make it negative
+       if (mySize >= 0 ) {                                                  
+          document.getElementById('myDiv02').innerHTML = result.getValues()[mySize]     // Float32Array([3, 4, 5])
+      } else {
+          document.getElementById('myDiv02').innerHTML = result.getValues()
+      }
+                                                         
+  })
+}">
+
+
+<div id="myDiv02">...</div>
+
+
+
+
+<input id="myButton03" type="button" value="matrix times a vector" onclick="{
+const math = dl.ENV.math;
+                                                        
+math.scope( function(keep) {
+  const matrixShape = [2, 3];  // 2 rows, 3 columns.
+  const matrix = dl.Array2D.new(matrixShape, [10, 20, 30, 40, 50, 60]);
+  const vector = dl.Array1D.new([0, 1, 2]);
+  const result = math.matrixTimesVector(matrix, vector);
+  document.getElementById('myDiv03').innerHTML =    'result shape:'+ result.shape  +   ',  result :'+ result.getValues()                                                                                                           
+});
+}">
+
+
+
+<div id="myDiv03">...</div><br>
+
+
+From <a href="https://deeplearnjs.org/docs/tutorials/intro.html">https://deeplearnjs.org/docs/tutorials/intro.html</a><br>
+<input id="myButton04" type="button" value="Mean Square Difference" onclick="{
+const math = dl.ENV.math
+                                                          
+math.scope((keep) => {
+  const a = dl.Array2D.new([2, 2], [1.0, 2.0, 3.0, 4.0]);
+  const b = dl.Array2D.new([2, 2], [0.0, 2.0, 4.0, 6.0]);
+                                                                           
+  // Non-blocking math calls.
+  const diff = math.sub(a, b);
+  const squaredDiff = math.elementWiseMul(diff, diff);
+  const sum = math.sum(squaredDiff);
+  const size = dl.Scalar.new(a.size);
+  const average = math.divide(sum, size);
+                                                                           
+  // Blocking call to actually read the values from average. Waits until the
+  // GPU has finished executing the operations before returning values.
+  // average is a Scalar so we use .get()
+  document.getElementById('myDiv04').innerHTML =  'The average = ' + average.get()
+});                                                          
+}">
+
+
+
+<div id="myDiv04">...</div><br>
+
+
+
+From deeplearnjs tutorial at: <a href="https://deeplearnjs.org/docs/tutorials/ml_beginners.html">https://deeplearnjs.org/docs/tutorials/ml_beginners.html</a><br><br>
+
+<input id="myButton01" type="button" value="Quadratic y = a * x^2 + b * x + c" onclick="{
+    var graph = new deeplearn.Graph();
+    var x_1 = graph.placeholder('x', []);
+    var a = graph.variable('a', deeplearn.Scalar.new(Math.random()));
+    var b = graph.variable('b', deeplearn.Scalar.new(Math.random()));
+    var c = graph.variable('c', deeplearn.Scalar.new(Math.random()));
+    var order2 = graph.multiply(a, graph.square(x_1));
+    var order1 = graph.multiply(b, x_1);
+    var y_1 = graph.add(graph.add(order2, order1), c);
+    var yLabel_1 = graph.placeholder('y label', []);
+    var cost_1 = graph.meanSquaredCost(y_1, yLabel_1);
+    var math = dl.ENV.math;
+    var session_1 = new deeplearn.Session(graph, math);
+
+
+    document.getElementById('myDiv05').innerHTML   =  'Solving the Quadratic y = 3x^2 + 2x + 1<br>'      
+    document.getElementById('myDiv05').innerHTML   +=  'By training the browser to work towards a given line with error<br>'   
+    document.getElementById('myDiv05').innerHTML   +=  'Defined by [0,1.1],[1,5.9],[2,16.8],[3,33.9]<br>'                        
+    document.getElementById('myDiv05').innerHTML   +=  '<br>using x = 4 the Quadratic result should be about 57.0 +- 2<br>' 
+
+
+    math.scope(function (keep) {
+        var result = session_1.eval(y_1, [{ tensor: x_1, data: deeplearn.Scalar.new(4) }]);
+
+
+       document.getElementById('myDiv01').innerHTML   += 'Initial Guess =' + result.getValues()+'<br><br>'
+
+        var xs = [
+            deeplearn.Scalar.new(0), deeplearn.Scalar.new(1), deeplearn.Scalar.new(2),
+            deeplearn.Scalar.new(3)
+        ];
+        var ys = [
+            deeplearn.Scalar.new(1.1), deeplearn.Scalar.new(5.9), deeplearn.Scalar.new(16.8),
+            deeplearn.Scalar.new(33.9)
+        ];
+        var shuffledInputProviderBuilder = new deeplearn.InCPUMemoryShuffledInputProviderBuilder([xs, ys]);        
+        var _a = shuffledInputProviderBuilder.getInputProviders();
+        var xProvider = _a[0];
+        var yProvider = _a[1];
+        var NUM_BATCHES = 20;
+        var BATCH_SIZE = xs.length;
+        var LEARNING_RATE = .01;
+        var optimizer = new deeplearn.SGDOptimizer(LEARNING_RATE);
+       
+
+         for (var i = 0; i < NUM_BATCHES; i++) {
+            var costValue = session_1.train(cost_1, [{ tensor: x_1, data: xProvider }, { tensor: yLabel_1, data: yProvider }], BATCH_SIZE, optimizer, deeplearn.CostReduction.MEAN);
+
+            document.getElementById('myDiv05').innerHTML   += 'average cost: ' + costValue.get() + '<br>'
+        }
+        result = session_1.eval(y_1, [{ tensor: x_1, data: deeplearn.Scalar.new(4) }]);
+
+       document.getElementById('myDiv01').innerHTML   += '<br><br>After training '+NUM_BATCHES+' batches with a learning rate of '+ LEARNING_RATE+ '<br>'                                                                 
+       document.getElementById('myDiv01').innerHTML   += 'With an input of 4 the output =' + result.getValues() + '<br>'                                                                 
+                                                                                                                                                                                                                                
+    });                                                           
+                                                                            
+                                                                            
+}"><br>
+
+<div id="myDiv05">...</div>
