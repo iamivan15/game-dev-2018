@@ -6,16 +6,18 @@ Second button sets and shows the myRandom array.<br>
   //alert(Math.floor(Math.random()*9+1))
 
    myStuff = new Array()
-   myStuff[1] = '...'
-   myStuff[2] = '...'
-   myStuff[3] = '...'
-   myStuff[4] = '...'
-   myStuff[5] = '...'
-   myStuff[6] = '...'
-   myStuff[7] = '...'
+   myStuff[1] = 'labtop '
+   myStuff[2] = 'chair '
+   myStuff[3] = 'desk '
+   myStuff[4] = 'white board '
+   myStuff[5] = 'printer '
+   myStuff[6] = 'phone '
+   myStuff[7] = 'computer set '
 
-   document.getElementById('myDiv01').innerHTML = 'Hello'
 
+   for (myLoop=1; myLoop <=7; myLoop++ ){
+    document.getElementById('myDiv01').innerHTML += myStuff[myLoop] + ' <br>'
+   }
 "><br><br>
 
 
@@ -25,4 +27,4 @@ Second button sets and shows the myRandom array.<br>
 
 "><br>
 
-<id id="myDiv01">...</div>
+<id id="myDiv01"></div>
