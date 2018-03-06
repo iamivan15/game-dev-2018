@@ -20,11 +20,22 @@ Second button sets and shows the myRandom array.<br>
    }
 "><br><br>
 
+<div id="myDiv01"></div>
 
-<input type=text id="myText01" value= 3><br>
+
+<input type=text id="myText01" size= 6 value= 3><br>
 <input type=button value="Run myRandom" onclick="
-  alert()
+ 
+  myRandomNumber = new Array()
 
+  myRandomNumber[0] = Math.floor(Math.random()*9+1)
+
+   //for (myLoop=1; myLoop <=7; myLoop++ ){
+
+    document.getElementById('myDiv02').innerHTML += myRandomNumber[0] + ' <br>'
+   //}
 "><br>
 
-<id id="myDiv01"></div>
+<div id="myDiv02"></div>
+
+
