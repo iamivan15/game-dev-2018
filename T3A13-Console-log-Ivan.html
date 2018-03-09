@@ -16,7 +16,7 @@ or <br>
 
 
 <input type=button value="console.info" onclick="{
-   console.info('%cwow','color:green;background-color:yellow');
+   console.info('%cgreen','color:green;background-color:yellow');
 }"><br>
 
 
@@ -25,4 +25,27 @@ or <br>
    myInt = 6
    myFloat = 4.343
   console.log(myString + 'His age is '+myInt)
+}"><br>
+
+
+<input type=button value="console.error" onclick="{
+   console.error('an error')
+}"><br>
+
+
+<input type=button value="console.trace" onclick="{
+   console.trace()
+}"><br>
+
+
+<input type=button value="console.time" onclick="{
+   console.time('Test loop')
+   for(x=0; x<= 5000; x++){y=4}
+   console.timeEnd('Test loop')
+}"><br>
+
+
+
+<input type=button value="console.memory" onclick="{
+   console.error(console.memory)
 }"><br>
