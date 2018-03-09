@@ -7,17 +7,20 @@ Refernce info at this link
 <br>
 or <br>
 <a herf="http://devtoolsecrats.com/secrect/console-log-info-warn-error.html">http://devtoolsecrets.com/secret/console-log-info-warn-error.html</a>
-<br>
+<br><br>
+
 
 
 <input type=button value="console.log" onclick="{
    console.log('Hello Console')
-}"><br>
+}"><br><br>
+
 
 
 <input type=button value="console.info" onclick="{
    console.info('%cgreen','color:green;background-color:yellow');
-}"><br>
+}"><br><br>
+
 
 
 <input type=button value="variables" onclick="{
@@ -25,27 +28,50 @@ or <br>
    myInt = 6
    myFloat = 4.343
   console.log(myString + 'His age is '+myInt)
-}"><br>
+}"><br><br>
+
 
 
 <input type=button value="console.error" onclick="{
    console.error('an error')
-}"><br>
+}"><br><br>
+
 
 
 <input type=button value="console.trace" onclick="{
    console.trace()
-}"><br>
+}"><br><br>
+
 
 
 <input type=button value="console.time" onclick="{
    console.time('Test loop')
    for(x=0; x<= 5000; x++){y=4}
    console.timeEnd('Test loop')
-}"><br>
+}"><br><br>
 
 
 
 <input type=button value="console.memory" onclick="{
    console.error(console.memory)
-}"><br>
+}"><br><br>
+
+
+
+<input type=button value="console.profile" onclick="{
+   console.profile('Test profile')
+   // do stuff and see if it ends
+   console.profileEnd('Test profile')
+}"><br><br>
+
+
+<input type=button value="console.assert(ture)" onclick="{
+   console.assert(ture, 'do not log this')
+}"><br><br>
+
+<input type=button value="console.assert(false)" onclick="{
+   console.assert(false, 'log this')
+}"><br><br>
+
+
+
