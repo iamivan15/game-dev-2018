@@ -65,8 +65,8 @@ or <br>
 }"><br><br>
 
 
-<input type=button value="console.assert(ture)" onclick="{
-   console.assert(ture, 'do not log this')
+<input type=button value="console.assert(true)" onclick="{
+   console.assert(true, 'do not log this')
 }"><br><br>
 
 <input type=button value="console.assert(false)" onclick="{
@@ -75,3 +75,31 @@ or <br>
 
 
 
+<input type=button value="console.group" onclick="{
+   console.group('1')
+   console.group('2')
+   console.groupEnd('2')
+   console.groupEnd('1')
+}"><br><br>
+
+
+
+<input type=button value="console.count" onclick="{
+   for (myLoop=0; myLoop<=7; myLoop++){
+        console.count('Counting')
+    }
+}"><br><br>
+
+
+
+<input type=button value="console.clear" onclick="{
+   console.clear()
+}"><br><br>
+
+
+
+<input type=button value="console.table" onclick="{
+   for (myLoop=0; myLoop<=74; myLoop++){
+      console.table([{name:'Fred', age:myLoop}])
+   }
+}"><br><br>
