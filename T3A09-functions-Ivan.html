@@ -4,19 +4,19 @@
 
 function myMom(myX){
 
-   alert('Your '+ myX +' are dirty')
+   document.getElementById('myDiv01').innerHTML= 'Your '+ myX +' are dirty'
 
 }
 
 function myMom2(myY){
 
-   alert('Your '+ myY +' is dirty')
+   document.getElementById('myDiv01').innerHTML= 'Your '+ myY +' is dirty'
 
 }
 
 function myMom3(myZ){
 
-   alert('Your '+ myZ +' is on your dresser')
+   document.getElementById('myDiv01').innerHTML= 'Your '+ myZ +' is on your dresser'
 
 }
 
@@ -36,7 +36,7 @@ function myMom3(myZ){
 
 <input type=button value=inline funtion onclick="{
    (function () {
-      alert('incline works') 
+      document.getElementById('myDiv02').innerHTML= ('incline works') 
   })()
 }">
 
@@ -55,3 +55,7 @@ function myMom3(myZ){
 <input type=button value="where is my phone" onclick="{
    myMom3('phone')
 }">
+
+<div id="myDiv01" ></div>
+
+<div id="myDiv02" ></div>
