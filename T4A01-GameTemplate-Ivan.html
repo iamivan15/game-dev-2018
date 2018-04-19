@@ -16,9 +16,9 @@ myBgPosY = 0; // present vertical position
 
 myBgPosX = 0; // present horizonal position
 
-myBgHeight = 402; // height of background image
+myBgHeight = 500; // height of background image
 
-myBgWidth = 753; // width of background image
+myBgWidth = 1000; // width of background image
 
 myBgSpeedYdown = 1; // speed moving down
 
@@ -209,7 +209,7 @@ document.getElementById('bullet1').style.left = parseInt(document.getElementById
 
 <!-- ******************** onkeypress just for webpages is useless on mobile apps ************************** -->
 
-<body background="BackgroundImage.jpg" onload="myTimer = setInterval('myScroll()', 100)" onkeypress="{
+<body background="top down veiw of road.jpg" onload="myTimer = setInterval('myScroll()', 100)" onkeypress="{
 
 if(event.keyCode==97){ document.getElementById('move1').style.left = parseInt(document.getElementById('move1').style.left)-10+'px'} // small 'a' key go left
 
@@ -237,15 +237,7 @@ document.getElementById('myInstructions').style.visibility = 'hidden'}
 
 ">
 
-<ol>Instructions here:
-
-<li> Make you own game
-
-<li> For this demonstration. click the buttons and the red box
-
-<li> Delete the buttons you do not want in your game.
-
-<li> Look at the code for each button to see how to make buttons for other directions
+<ol>link here:
 
 <li>You might want to use <a href="http://www.online-image-editor.com/">http://www.online-image-editor.com/</a>
 
@@ -257,9 +249,9 @@ Click to hide.
 
 <!-- ******************** Following should be all your images ************************** -->
 
-<img id="move1" src="top down veiw of car.jpg" style="position:absolute; width:40px; height:80px; left:100px; top:250px" onClick="myGunPrep()">
+<img id="move1" src="top down veiw of car.jpg" style="position:absolute; width:120px; height:240px; left:400px; top:600px" onClick="myGunPrep()">
 
-<img id="move2" src="CarBlack.jpg" style="position:absolute; width:40px; height:80px; left:500px; top:240px;"/>
+<img id="move2" src="CarBlack.jpg" style="position:absolute; width:120px; height:240px; left:400px; top:300px;"/>
 
 <input type=button value="Fire" onClick="myGunPrep()">
 
@@ -305,6 +297,10 @@ checkAll()
 <!-- ******************** General game output ************************** -->
 
 <div id="myShowDiv1" style="width:300px; background-color:red">out 1</div>
+
+<div id="myShowDiv2" style="width:300px; background-color:red">out 2</div>
+
+<div id="myShowDiv3" style="width:300px; background-color:red">out 3</div>
 
 <br>At the bottom of every page make sure you include the following button:<br>
 
