@@ -127,6 +127,12 @@ document.getElementById('myShowDiv3').innerHTML = 'You hit the black car'
 
 }
 
+if (myHitOther('move1','move3')) {
+
+document.getElementById('myShowDiv3').innerHTML = 'You hit the black car'
+
+}
+
 if (myHitOther('bullet1','move2')) {
 
 document.getElementById('myShowDiv3').innerHTML = 'The bullet hit the black car'
@@ -251,6 +257,8 @@ Click to hide.
 
 <img id="move2" src="CarBlack.jpg" style="position:absolute; width:120px; height:240px; left:400px; top:300px;"/>
 
+<img id="move3" src="CarBlack.jpg" style="position:absolute; width:120px; height:240px; left:200px; top:500px;"/>
+
 <input type=button value="Fire" onClick="myGunPrep()">
 
 <img id="bullet1" src="myBulletPic.png" style="position:absolute; width:10px; height:10px; left:500px; top:240px; visibility:hidden"/>
@@ -330,6 +338,41 @@ checkAll()
 <input type=button value="Step Left Move2" onclick="{
 
 document.getElementById('move2').style.left = parseInt(document.getElementById('move2').style.left)-50+'px'
+
+checkAll()
+
+}"><br>
+
+
+
+
+<input type=button value="Step Down Move3" onclick="{
+
+document.getElementById('move3').style.top = parseInt(document.getElementById('move3').style.top)+50+'px'
+
+checkAll()
+
+}">
+
+<input type=button value="Step Up Move3" onclick="{
+
+document.getElementById('move3').style.top = parseInt(document.getElementById('move3').style.top)-50+'px'
+
+checkAll()
+
+}">
+
+<input type=button value="Step Right Move3" onclick="{
+
+document.getElementById('move3').style.left = parseInt(document.getElementById('move3').style.left)+50+'px'
+
+checkAll()
+
+}">
+
+<input type=button value="Step Left Move3" onclick="{
+
+document.getElementById('move3').style.left = parseInt(document.getElementById('move3').style.left)-50+'px'
 
 checkAll()
 
