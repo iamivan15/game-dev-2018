@@ -1,6 +1,6 @@
 
 
-<! -- T3A01-GAME-TEMPLATE-FRED.HTML -->
+<! -- T3A01-GAME-TEMPLATE-IVAN.HTML -->
 
 <html>
 
@@ -119,13 +119,11 @@ function checkAll(){
 
 if (myHitXY('move1',200,280)) {
 
-document.getElementById('myShowDiv3').innerHTML = 'You hit the red dot'
-
 } else {document.getElementById('myShowDiv3').innerHTML = ''}
 
 if (myHitOther('move1','move2')) {
 
-document.getElementById('myShowDiv3').innerHTML = 'You hit object move2'
+document.getElementById('myShowDiv3').innerHTML = 'You hit the black car'
 
 }
 
@@ -223,7 +221,7 @@ if(event.keyCode==115){ document.getElementById('move1').style.top = parseInt(do
 
 <script> // This object must be after the body tag
 
-myBgObject = eval('document.body');
+myBgObject = eval('document.body');s
 
 </script>
 
@@ -257,10 +255,6 @@ Click to hide.
 
 <img id="bullet1" src="myBulletPic.png" style="position:absolute; width:10px; height:10px; left:500px; top:240px; visibility:hidden"/>
 
-<!-- ******************** This is the silly little dot the main object hits ************************** -->
-
-<h1 style="position:absolute;left:200px;top:230px;"><font color=red>.</font></h1>
-
 <!-- ******************** Now all the buttons.
 
 Note: ontouchstart is faster than onclick but only works on touch screens or mobile ************************** -->
@@ -269,29 +263,78 @@ Note: ontouchstart is faster than onclick but only works on touch screens or mob
 
 <input type=button value="Bg Faster Right" onClick="myBgSpeedXright += 1">
 
+<input type=button value="BG Faster Up" onClick="myBgSpeedYdown -= 1">
+
+<input type=button value="Bg Faster Left" onClick="myBgSpeedXright -= 1"><br>
+
+
+
 <input type=button value="Step Right Move1" onclick="{
 
-document.getElementById('move1').style.left = parseInt(document.getElementById('move1').style.left)+5+'px'
+document.getElementById('move1').style.left = parseInt(document.getElementById('move1').style.left)+50+'px'
 
 checkAll()
 
 }">
+
+<input type=button value="Step Left Move1" onclick="{
+
+document.getElementById('move1').style.left = parseInt(document.getElementById('move1').style.left)-50+'px'
+
+checkAll()
+
+}">
+
+<input type=button value="Step Down Move1" onclick="{
+
+document.getElementById('move1').style.top = parseInt(document.getElementById('move1').style.top)+50+'px'
+
+checkAll()
+
+}">
+
+<input type=button value="Step Up Move1" onclick="{
+
+document.getElementById('move1').style.top = parseInt(document.getElementById('move1').style.top)-50+'px'
+
+checkAll()
+
+}"><br>
+
+
 
 <input type=button value="Step Down Move2" onclick="{
 
-document.getElementById('move2').style.top = parseInt(document.getElementById('move2').style.top)+5+'px'
+document.getElementById('move2').style.top = parseInt(document.getElementById('move2').style.top)+50+'px'
 
 checkAll()
 
 }">
 
-<input type=button value="touch event Right" ontouchstart="{
+<input type=button value="Step Up Move2" onclick="{
 
-document.getElementById('move1').style.left = parseInt(document.getElementById('move1').style.left)+5+'px'
+document.getElementById('move2').style.top = parseInt(document.getElementById('move2').style.top)-50+'px'
 
 checkAll()
 
 }">
+
+<input type=button value="Step Right Move2" onclick="{
+
+document.getElementById('move2').style.left = parseInt(document.getElementById('move2').style.left)+50+'px'
+
+checkAll()
+
+}">
+
+<input type=button value="Step Left Move2" onclick="{
+
+document.getElementById('move2').style.left = parseInt(document.getElementById('move2').style.left)-50+'px'
+
+checkAll()
+
+}"><br>
+
 
 
 <!-- ******************** General game output ************************** -->
