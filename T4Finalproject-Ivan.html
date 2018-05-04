@@ -4,6 +4,11 @@
 
 <script>
 
+
+myScoreIvan = 100
+
+
+
 //Global variables here
 
 myBgPosY = 0; // present vertical position
@@ -117,35 +122,57 @@ if (myHitXY('move1',200,280)) {
 
 if (myHitOther('move1','move2')) {
 
-document.getElementById('myShowDiv3').innerHTML = 'You hit the black car'
-
+   document.getElementById('myShowDiv3').innerHTML = 'You hit the black car'
+   myScoreIvan -=2
+   document.getElementById('myScoreDiv').innerHTML = myScoreIvan
 }
 
 if (myHitOther('move1','move3')) {
 
-document.getElementById('myShowDiv3').innerHTML = 'You hit the black car'
-
+   document.getElementById('myShowDiv3').innerHTML = 'You hit the black car'
+   myScoreIvan -=6
+   document.getElementById('myScoreDiv').innerHTML = myScoreIvan
 }
 
 if (myHitOther('move1','move4')) {
 
-document.getElementById('myShowDiv3').innerHTML = 'You hit the yelow van'
+   document.getElementById('myShowDiv3').innerHTML = 'You hit the yelow van'
+   myScoreIvan -=6
+   document.getElementById('myScoreDiv').innerHTML = myScoreIvan
+}
+
+if (myHitOther('move1','move5')) {
+
+   document.getElementById('myShowDiv3').innerHTML = 'You hit the yelow van'
+   myScoreIvan -=2
+   document.getElementById('myScoreDiv').innerHTML = myScoreIvan
+}
+
+if (myHitOther('move1','move6')) {
+
+   document.getElementById('myShowDiv3').innerHTML = 'You hit the black car'
+   myScoreIvan -=2
+   document.getElementById('myScoreDiv').innerHTML = myScoreIvan
+}
+
+if (myHitOther('move1','move7')) {
+
+   document.getElementById('myShowDiv3').innerHTML = 'You hit the yelow van'
+   myScoreIvan -=6
+   document.getElementById('myScoreDiv').innerHTML = myScoreIvan
+}
+
+
+if (myScoreIvan <= 0){
+   clearInterval(myTimer)
+   alert('Game Over\nGoing to the next level')
+   window.location = 'http://www.google.ca'
+}
+
 
 }
 
-if (myHitOther('bullet1','move2')) {
 
-document.getElementById('myShowDiv3').innerHTML = 'The bullet hit the black car'
-
-document.getElementById('bullet1').style.visibility = 'hidden'
-
-document.getElementById('bullet1').style.left = '-200px'
-
-clearInterval(document.myShot)
-
-}
-
-}
 
 // ******************** Object Detection finished ************************** -->
 
@@ -153,9 +180,14 @@ clearInterval(document.myShot)
 
 document.mySpeedX = 0;
 
-document.mySpeedY = 0;
+document.mySpeedY1 = 30;
+
+document.mySpeedY2 = 60;
 
 function myAuto(){
+
+
+
 
 if(parseInt(document.getElementById('move1').style.left) > window.innerWidth - document.getElementById('move1').width){
 
@@ -163,9 +195,77 @@ document.mySpeedX *= -1
 
 }
 
-document.getElementById('move1').style.left = parseInt(document.getElementById('move1').style.left)+document.mySpeedX+'px'
 
-document.getElementById('move1').style.top = parseInt(document.getElementById('move1').style.top)+document.mySpeedY+'px'
+
+
+// document.getElementById('move2').style.left = parseInt(document.getElementById('move2').style.left)+document.mySpeedX+'px'
+
+document.getElementById('move2').style.top = parseInt(document.getElementById('move2').style.top)+document.mySpeedY1+'px'
+
+
+if (parseInt(document.getElementById('move2').style.top)   > 1000){
+
+    document.getElementById('move2').style.top = '-1500px'
+}
+
+
+
+// document.getElementById('move3').style.left = parseInt(document.getElementById('move3').style.left)+document.mySpeedX+'px'
+
+document.getElementById('move3').style.top = parseInt(document.getElementById('move3').style.top)+document.mySpeedY2+'px'
+
+
+if (parseInt(document.getElementById('move3').style.top)   > 1000){
+
+    document.getElementById('move3').style.top = '-2200px'
+}
+
+
+
+// document.getElementById('move4').style.left = parseInt(document.getElementById('move4').style.left)+document.mySpeedX+'px'
+
+document.getElementById('move4').style.top = parseInt(document.getElementById('move4').style.top)+document.mySpeedY2+'px'
+
+
+if (parseInt(document.getElementById('move4').style.top)   > 1000){
+
+    document.getElementById('move4').style.top = '-2800px'
+}
+
+
+// document.getElementById('move5').style.left = parseInt(document.getElementById('move5').style.left)+document.mySpeedX+'px'
+
+document.getElementById('move5').style.top = parseInt(document.getElementById('move5').style.top)+document.mySpeedY1+'px'
+
+
+if (parseInt(document.getElementById('move5').style.top)   > 1000){
+
+    document.getElementById('move5').style.top = '-1800px'
+}
+
+
+// document.getElementById('move6').style.left = parseInt(document.getElementById('move6').style.left)+document.mySpeedX+'px'
+
+document.getElementById('move6').style.top = parseInt(document.getElementById('move6').style.top)+document.mySpeedY1+'px'
+
+
+if (parseInt(document.getElementById('move6').style.top)   > 1000){
+
+    document.getElementById('move6').style.top = '-1000px'
+}
+
+
+// document.getElementById('move7').style.left = parseInt(document.getElementById('move7').style.left)+document.mySpeedX+'px'
+
+document.getElementById('move7').style.top = parseInt(document.getElementById('move7').style.top)+document.mySpeedY2+'px'
+
+
+if (parseInt(document.getElementById('move7').style.top)   > 1000){
+
+    document.getElementById('move7').style.top = '-2500px'
+}
+
+
 
 // auto moving "move2" should occur here similar to the above.
 
@@ -185,26 +285,6 @@ document.getElementById('myShowDiv2').innerHTML = 'move2 x='+parseInt(document.g
 
 }
 
-function myGunPrep(){
-
-document.getElementById('bullet1').style.visibility = 'visible'
-
-document.getElementById('bullet1').style.left = document.getElementById('move1').style.left
-
-document.getElementById('bullet1').style.top = document.getElementById('move1').style.top
-
-clearInterval(document.myShot)
-
-document.myShot = setInterval('myGun()', 30) // calls the function every 30 mille seconds
-
-}
-
-function myGun(){
-
-document.getElementById('bullet1').style.left = parseInt(document.getElementById('bullet1').style.left) + 20 + 'px'
-
-}
-
 </script>
 
 </head>
@@ -215,42 +295,96 @@ document.getElementById('bullet1').style.left = parseInt(document.getElementById
 
 <body background="top down veiw of road.jpg" onload="myTimer = setInterval('myScroll()', 100)" onkeypress="{
 
-if(event.keyCode==97){ document.getElementById('move1').style.left = parseInt(document.getElementById('move1').style.left)-100+'px'} // small 'a' key go left
+if(event.keyCode==97){ 
+   document.getElementById('move1').style.left = parseInt(document.getElementById('move1').style.left)-100+'px'
 
-if(event.keyCode==119){ document.getElementById('move1').style.top = parseInt(document.getElementById('move1').style.top)-10+'px'} // small 'w' key go up
+   if (parseInt(document.getElementById('move1').style.left) <= 200){
 
-if(event.keyCode==100){ document.getElementById('move1').style.left = parseInt(document.getElementById('move1').style.left)+100+'px'} // small 'd' key go left
+       document.getElementById('move1').style.left = '200px'
+   }
 
-if(event.keyCode==115){ document.getElementById('move1').style.top = parseInt(document.getElementById('move1').style.top)+10+'px'} // small 's' key go up
+} 
 
-if(event.keyCode==32){ document.getElementById('move1').style.left = parseInt(document.getElementById('move1').style.left)+100+'px'} 
+
+
+// small 'a' key go left
+
+
+
+if(event.keyCode==119){
+ document.getElementById('move1').style.top = parseInt(document.getElementById('move1').style.top)-100+'px'
+
+   if (parseInt(document.getElementById('move1').style.top) <= 100){
+
+       document.getElementById('move1').style.top = '100px'
+   }
+
+
+} 
+
+
+// small 'w' key go up
+
+
+
+if(event.keyCode==100){
+   document.getElementById('move1').style.left = parseInt(document.getElementById('move1').style.left)+100+'px'
+   
+   if (parseInt(document.getElementById('move1').style.left) >= 500){
+
+       document.getElementById('move1').style.left = '500px'
+   }
+
+}
+
+
+// small 'd' key go left
+
+
+
+if(event.keyCode==115)
+  { document.getElementById('move1').style.top = parseInt(document.getElementById('move1').style.top)+100+'px'
+
+   if (parseInt(document.getElementById('move1').style.top) >= 800){
+
+       document.getElementById('move1').style.top = '800px'
+   }
+
+
+} 
+
+
+// small 's' key go up
+
+
+
 
 }">
 
 <script> // This object must be after the body tag
 
-myBgObject = eval('document.body');s
+myBgObject = eval('document.body');
 
 </script>
 
-<h2 align=center style="background-color:Red"> Road Runner by Ivan AB</h2>
+<h2 align=center style="background-color:Red"> Road Runner by Ivan</h2>
 
 
 <!-- ******************** Following should be all your images ************************** -->
 
 <img id="move1" src="PlayerCar.jpg" style="position:absolute; width:60px; height:120px; left:400px; top:600px" onClick="myGunPrep()">
 
-<img id="move2" src="CarBlack.jpg" style="position:absolute; width:60px; height:120px; left:400px; top:300px;"/>
+<img id="move2" src="CarBlack.jpg" style="position:absolute; width:60px; height:120px; left:400px; top:-300px;"/>
 
-<img id="move3" src="CarBlack.jpg" style="position:absolute; width:60px; height:120px; left:200px; top:500px;"/>
+<img id="move3" src="CarBlackDown.jpg" style="position:absolute; width:60px; height:120px; left:200px; top:-500px;"/>
 
-<img id="move4" src="VanYellow.jpg" style="position:absolute; width:60px; height:120px; left:300px; top:200px;"/>
+<img id="move4" src="VanYellowDown.jpg" style="position:absolute; width:70px; height:120px; left:295px; top:-1000px;"/>
 
-<input type=button value="Fire" onClick="myGunPrep()">
+<img id="move5" src="VanYellow.jpg" style="position:absolute; width:70px; height:120px; left:495px; top:-1200px;"/>
 
-<img id="bullet1" src="Bullet.jpg" style="position:absolute; width:10px; height:10px; left:500px; top:240px; visibility:hidden"/>
+<img id="move6" src="CarBlack.jpg" style="position:absolute; width:60px; height:120px; left:400px; top:-1500px;"/>
 
-
+<img id="move7" src="VanYellowDown.jpg" style="position:absolute; width:70px; height:120px; left:195px; top:-1800px;"/>
 
 <!-- ******************** General game output ************************** -->
 
@@ -260,7 +394,18 @@ myBgObject = eval('document.body');s
 
 <div id="myShowDiv3" style="width:300px; background-color:red">out 3</div>
 
-<br>At the bottom of every page make sure you include the following button:<br>
+<div id="myScoreDiv" style="width:300px; background-color:red">100</div>
+
+<br>
+
+
+
+
+
+<input type=button value="Start" style="font-size:25px" onclick="{
+
+
+}"><br>
 
 <input type=button value="Back" style="font-size:25px" onclick="{window.history.back()}"><br><br>
 
