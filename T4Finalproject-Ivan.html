@@ -5,9 +5,21 @@
 <script>
 
 
-myScoreIvan = 100
+myScoreIvan = 25
+
+myScoreTime = 0
 
 
+
+function myFun(){
+
+   myScoreTime += 1
+
+   document.getElementById('myScore2').innerHTML = myScoreTime
+
+
+
+}
 
 //Global variables here
 
@@ -166,7 +178,7 @@ if (myHitOther('move1','move7')) {
 if (myScoreIvan <= 0){
    clearInterval(myTimer)
    alert('Game Over\nGoing to the next level')
-   window.location = 'http://www.google.ca'
+   location = 'Con3'
 }
 
 
@@ -293,7 +305,7 @@ document.getElementById('myShowDiv2').innerHTML = 'move2 x='+parseInt(document.g
 
 <!-- ******************** onkeypress just for webpages is useless on mobile apps ************************** -->
 
-<body background="top down veiw of road.jpg" onload="myTimer = setInterval('myScroll()', 100)" onkeypress="{
+<body background="top down veiw of road.jpg" onkeypress="{
 
 if(event.keyCode==97){ 
    document.getElementById('move1').style.left = parseInt(document.getElementById('move1').style.left)-100+'px'
@@ -394,7 +406,11 @@ myBgObject = eval('document.body');
 
 <div id="myShowDiv3" style="width:300px; background-color:red">out 3</div>
 
-<div id="myScoreDiv" style="width:300px; background-color:red">100</div>
+<div id="myScoreDiv" style="width:300px; background-color:red">25</div>
+
+<div id="myScore2" style="width:300px; background-color:red">0</div>
+
+
 
 <br>
 
@@ -404,10 +420,13 @@ myBgObject = eval('document.body');
 
 <input type=button value="Start" style="font-size:25px" onclick="{
 
+   myTimer = setInterval('myScroll()', 100)
+
+   myCounter = setInterval('myFun()', 1000)
 
 }"><br>
 
-<input type=button value="Back" style="font-size:25px" onclick="{window.history.back()}"><br><br>
+<input type=button value="Back" style="font-size:25px" onclick="{Con3()}"><br><br>
 
 </body>
 
